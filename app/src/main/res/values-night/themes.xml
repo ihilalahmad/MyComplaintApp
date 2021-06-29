@@ -13,4 +13,23 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+
+    <style name="styleTopicsToolbarTitle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:layout_marginLeft">9dp</item>
+        <item name="fontFamily">@font/yahoo_sans_cond_black</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:layout_marginBottom">3dp</item>
+    </style>
+
+    <style name="YahooSans">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+
 </resources>

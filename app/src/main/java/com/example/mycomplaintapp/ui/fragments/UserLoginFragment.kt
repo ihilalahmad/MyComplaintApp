@@ -18,7 +18,6 @@ class UserLoginFragment : Fragment() {
 
     private lateinit var binding: FragmentUserLoginBinding
 
-
     companion object {
         const val LOGIN_SUCCESSFUL: String = "LOGIN_SUCCESSFUL"
     }
@@ -39,23 +38,25 @@ class UserLoginFragment : Fragment() {
 
         var name = ""
 
-        binding.etName.addTextChangedListener {
+        binding.etLoginEmail.addTextChangedListener {
             name = it.toString()
         }
 
         binding.btnLogin.setOnClickListener {
-            Log.i("Name", "myName: $name ")
 
-            if (name == "Hilal") {
+            if (name == "hilal@gmail.com") {
                 val toast = Toast.makeText(context, "Name: $name", Toast.LENGTH_LONG)
                 toast.show()
                 savedStateHandle.set(LOGIN_SUCCESSFUL, true)
-                findNavController().popBackStack()
+                findNavController().navigate(R.id.navigate_login_to_home)
             } else {
                 val toast = Toast.makeText(context, "Not Hilal", Toast.LENGTH_LONG)
                 toast.show()
             }
+        }
 
+        binding.tvRegisterHere.setOnClickListener {
+            findNavController().navigate(R.id.navigate_login_to_register)
         }
 
         return binding.root

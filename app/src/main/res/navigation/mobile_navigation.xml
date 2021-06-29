@@ -19,7 +19,22 @@
     <fragment
         android:id="@+id/userLoginFragment"
         android:name="com.example.mycomplaintapp.ui.fragments.UserLoginFragment"
-        android:label="fragment_user_login"
-        tools:layout="@layout/fragment_user_login" />
+        android:label="User Login"
+        tools:layout="@layout/fragment_user_login" >
+        <action
+            android:id="@+id/navigate_login_to_register"
+            app:destination="@id/userRegistrationFragment" />
+        <action
+            android:id="@+id/navigate_login_to_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/userRegistrationFragment"
+        android:name="com.example.mycomplaintapp.ui.fragments.UserRegistrationFragment"
+        android:label="User Registration" >
+        <action
+            android:id="@+id/navigate_register_to_login"
+            app:destination="@id/userLoginFragment" />
+    </fragment>
 
 </navigation>

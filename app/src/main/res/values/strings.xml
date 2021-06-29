@@ -4,5 +4,16 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_complaints">Complaints</string>
     <string name="title_logout">Logout</string>
+    <string name="complaint_management_login_text">Complaint Management  <br/> Login</string>
+    <string name="complaint_management_signup_text">Complaint Management  <br/> Sign Up</string>
+    <string name="login">Login</string>
+    <string name="enter_password">Enter password</string>
+    <string name="enter_name">Enter name</string>
+    <string name="enter_email">Enter email</string>
+    <string name="not_register_yet">Not register yet?</string>
+    <string name="register_here">Register here</string>
+    <string name="already_have_an_account">Already have an account</string>
+    <string name="login_here">Login here</string>
+    <string name="register">Register</string>
 
 </resources>
