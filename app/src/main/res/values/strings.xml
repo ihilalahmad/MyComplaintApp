@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Complaint App</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_complaints">Complaints</string>
+    <string name="title_logout">Logout</string>
+
+</resources>
