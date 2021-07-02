@@ -10,15 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import com.example.mycomplaintapp.R
 import com.example.mycomplaintapp.databinding.FragmentHomeBinding
+import com.example.mycomplaintapp.models.UserModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
 
 class HomeFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private var binding: FragmentHomeBinding? = null
+    private lateinit var mAuth: FirebaseAuth
+    private var mUser: FirebaseUser? = null
+    private lateinit var firebaseDatabase: DatabaseReference
+    private lateinit var userID: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,33 +31,53 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        return root
+        initFirebase()
+        if (mAuth.currentUser == null) {
+            findNavController().navigate(R.id.action_navigation_home_to_userLoginFragment)
+        }else {
+            getUserDataFromFirebase()
+        }
+        return binding!!.root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private fun initFirebase() {
+        mAuth = FirebaseAuth.getInstance()
+        mUser = mAuth.currentUser
+        firebaseDatabase = FirebaseDatabase.getInstance().getReference("Users")
+        if (mUser != null) {
+            userID = mUser!!.uid
+        }
+    }
 
-        val navController = findNavController()
+    private fun getUserDataFromFirebase() {
+        firebaseDatabase.child(userID).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val userModel : UserModel? = snapshot.getValue(UserModel::class.java)
 
-        val currentBackStackEntry = navController.currentBackStackEntry!!
-        val savedStateHandle = currentBackStackEntry.savedStateHandle
-        savedStateHandle.getLiveData<Boolean>(UserLoginFragment.LOGIN_SUCCESSFUL)
-            .observe(currentBackStackEntry, Observer { success ->
-                if (!success) {
-                    val startDestination = navController.graph.startDestination
-                    val navOptions = NavOptions.Builder()
-                        .setPopUpTo(startDestination, true)
-                        .build()
-                    navController.navigate(startDestination, null, navOptions)
+                if (userModel != null) {
+
+                    val userName = userModel.userName
+                    val userEmail = userModel.userEmail
+
+                    binding!!.tvUserId.text = userID
+                    binding!!.tvUserName.text = userName
+                    binding!!.tvUserEmail.text = userEmail
                 }
-            })
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        binding = null
     }
 }
