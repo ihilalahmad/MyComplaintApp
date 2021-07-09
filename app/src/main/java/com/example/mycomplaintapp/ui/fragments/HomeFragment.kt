@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,7 +39,7 @@ class HomeFragment : Fragment(), DeptClickListener {
         if (mAuth.currentUser == null) {
             findNavController().navigate(R.id.action_navigation_home_to_userLoginFragment)
         }else {
-//            getUserDataFromFirebase()
+            getDeptsFromFirebase()
             setupRecyclerView()
         }
         return binding!!.root
@@ -47,7 +48,7 @@ class HomeFragment : Fragment(), DeptClickListener {
     private fun initFirebase() {
         mAuth = FirebaseAuth.getInstance()
         mUser = mAuth.currentUser
-        firebaseDatabase = FirebaseDatabase.getInstance().getReference("Users")
+        firebaseDatabase = FirebaseDatabase.getInstance().getReference("Departments")
         if (mUser != null) {
             userID = mUser!!.uid
         }
@@ -73,29 +74,18 @@ class HomeFragment : Fragment(), DeptClickListener {
 
     }
 
-//    private fun getUserDataFromFirebase() {
-//        firebaseDatabase.child(userID).addListenerForSingleValueEvent(object : ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                val userModel : UserModel? = snapshot.getValue(UserModel::class.java)
-//
-//                if (userModel != null) {
-//
-//                    val userName = userModel.userName
-//                    val userEmail = userModel.userEmail
-//
-//                    binding!!.tvUserId.text = userID
-//                    binding!!.tvUserName.text = userName
-//                    binding!!.tvUserEmail.text = userEmail
-//                }
-//
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//
-//            }
-//
-//        })
-//    }
+    private fun getDeptsFromFirebase() {
+        firebaseDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+    }
 
 
 
