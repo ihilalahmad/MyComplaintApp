@@ -28,11 +28,13 @@ class DeptAdapter(
         holder.binding.apply {
             tvDeptName.text = deptList[position].deptName
             tvDeptDesc.text = deptList[position].deptDesc
+
+            tvRegisterComplaint.setOnClickListener {
+                deptClickListener.onDeptClick(deptList[position])
+            }
         }
 
-        holder.itemView.setOnClickListener {
-            deptClickListener.onDeptClick(holder.binding.tvRegisterComplaint,deptList[position])
-        }
+
     }
 
     override fun getItemCount() = deptList.size

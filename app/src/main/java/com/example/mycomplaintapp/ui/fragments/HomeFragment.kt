@@ -4,24 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mycomplaintapp.R
 import com.example.mycomplaintapp.databinding.FragmentHomeBinding
 import com.example.mycomplaintapp.interfaces.DeptClickListener
 import com.example.mycomplaintapp.models.DeptModel
-import com.example.mycomplaintapp.models.UserModel
 import com.example.mycomplaintapp.ui.DeptAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), DeptClickListener {
 
@@ -105,12 +98,16 @@ class HomeFragment : Fragment(), DeptClickListener {
 //    }
 
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
     }
 
-    override fun onDeptClick(view: View, deptModel: DeptModel) {
-        Toast.makeText(context, "${deptModel.deptName} clicked.", Toast.LENGTH_SHORT).show()
+    override fun onDeptClick(deptModel: DeptModel) {
+        val bundle = Bundle().apply {
+            putSerializable("department", deptModel)
+        }
+        findNavController().navigate(R.id.navigate_to_register_complaint,bundle)
     }
 }

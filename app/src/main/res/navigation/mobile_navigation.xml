@@ -9,42 +9,77 @@
         android:id="@+id/navigation_home"
         android:name="com.example.mycomplaintapp.ui.fragments.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_userLoginFragment"
             app:destination="@id/userLoginFragment"
             app:popUpTo="@id/userLoginFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/navigate_to_register_complaint"
+            app:destination="@id/registerComplaintFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.mycomplaintapp.ui.fragments.ComplaintsFragment"
-        android:label="@string/title_dashboard"
+        android:label="Complaints"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/userLoginFragment"
         android:name="com.example.mycomplaintapp.ui.fragments.UserLoginFragment"
         android:label="User Login"
-        tools:layout="@layout/fragment_user_login" >
+        tools:layout="@layout/fragment_user_login">
         <action
             android:id="@+id/navigate_login_to_register"
-            app:destination="@id/userRegistrationFragment" />
+            app:destination="@id/userRegistrationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"  />
         <action
             android:id="@+id/navigate_login_to_home"
             app:destination="@id/navigation_home"
             app:popUpTo="@id/navigation_home"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"  />
     </fragment>
 
     <fragment
         android:id="@+id/userRegistrationFragment"
         android:name="com.example.mycomplaintapp.ui.fragments.UserRegistrationFragment"
-        android:label="User Registration" >
+        android:label="User Registration">
         <action
             android:id="@+id/navigate_register_to_login"
-            app:destination="@id/userLoginFragment" />
+            app:destination="@id/userLoginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"  />
+    </fragment>
+    <fragment
+        android:id="@+id/registerComplaintFragment"
+        android:name="com.example.mycomplaintapp.ui.fragments.RegisterComplaintFragment"
+        android:label="Register Complaint"
+        tools:layout="@layout/fragment_register_complaint">
+        <argument
+            android:name="department"
+            app:argType="com.example.mycomplaintapp.models.DeptModel"/>
+        <action
+            android:id="@+id/navigate_to_home"
+            app:destination="@id/navigation_home"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
 

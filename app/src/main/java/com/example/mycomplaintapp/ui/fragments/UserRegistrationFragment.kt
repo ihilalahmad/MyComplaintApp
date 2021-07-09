@@ -64,25 +64,24 @@ class UserRegistrationFragment : Fragment() {
                     Toast.makeText(context, "User Registration error: ${it.message}", Toast.LENGTH_SHORT).show()
                 }
         }
-
     }
 
     private fun saveUserInFirebaseDatabase(userModel: UserModel) {
         FirebaseDatabase.getInstance().getReference("Users")
-            .child(FirebaseAuth.getInstance().currentUser.uid)
+            .child(FirebaseAuth.getInstance().currentUser!!.uid)
             .setValue(userModel)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
                     binding.regProgressBar.visibility = View.GONE
                     binding.btnRegister.visibility = View.VISIBLE
                     findNavController().navigate(R.id.navigate_register_to_login)
-                    Toast.makeText(context, "User saved successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "User registered successfully", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener {
                 binding.regProgressBar.visibility = View.GONE
                 binding.btnRegister.visibility = View.VISIBLE
-                Toast.makeText(context, "Saving user error: ${it.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "User registration error: ${it.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
