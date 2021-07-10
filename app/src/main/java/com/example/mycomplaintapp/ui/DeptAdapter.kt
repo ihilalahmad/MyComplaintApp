@@ -27,13 +27,11 @@ class DeptAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.apply {
             tvDeptName.text = deptList[position].deptName
-            tvDeptDesc.text = deptList[position].deptDesc
 
             tvRegisterComplaint.setOnClickListener {
                 deptClickListener.onDeptClick(deptList[position])
             }
         }
-
 
     }
 

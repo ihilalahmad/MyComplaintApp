@@ -73,6 +73,12 @@
         <argument
             android:name="department"
             app:argType="com.example.mycomplaintapp.models.DeptModel"/>
+        <argument
+            android:name="userId"
+            app:argType="string"/>
+        <argument
+            android:name="userName"
+            app:argType="string"/>
         <action
             android:id="@+id/navigate_to_home"
             app:destination="@id/navigation_home"

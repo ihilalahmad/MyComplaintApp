@@ -29,8 +29,8 @@ class UserLoginFragment : Fragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentUserLoginBinding.inflate(inflater, container, false)
@@ -55,8 +55,8 @@ class UserLoginFragment : Fragment() {
             binding.btnLogin.visibility = View.GONE
 
             mAuth.signInWithEmailAndPassword(
-                    binding.etLoginEmail.text.toString(),
-                    binding.etLoginPassword.text.toString()
+                binding.etLoginEmail.text.toString(),
+                binding.etLoginPassword.text.toString()
             ).addOnCompleteListener {
                 if (it.isSuccessful) {
                     binding.loginProgressBar.visibility = View.GONE
