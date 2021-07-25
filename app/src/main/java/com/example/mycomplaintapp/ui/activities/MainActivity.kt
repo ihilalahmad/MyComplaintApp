@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
                 setOf(
                         R.id.navigation_home,
-                        R.id.navigation_dashboard,
+                        R.id.navigation_complaints,
                         R.id.userLoginFragment,
                         R.id.userRegistrationFragment
                 )
@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.userLoginFragment -> hideBottomNav()
                 R.id.userRegistrationFragment -> hideBottomNav()
                 R.id.registerComplaintFragment -> hideBottomNav()
+                R.id.chatFragment -> hideBottomNav()
                 else -> showBottomNav()
             }
         }
@@ -65,6 +66,7 @@ class MainActivity : AppCompatActivity() {
     private fun hideBottomNav() {
         binding.navView.visibility = View.GONE
     }
+
 
     override fun onBackPressed() {
         navController.addOnDestinationChangedListener { _, destination, _ ->

@@ -1,11 +1,8 @@
-package com.example.mycomplaintapp.ui
+package com.example.mycomplaintapp.ui.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mycomplaintapp.R
 import com.example.mycomplaintapp.databinding.DeptListItemBinding
 import com.example.mycomplaintapp.interfaces.DeptClickListener
 import com.example.mycomplaintapp.models.DeptModel

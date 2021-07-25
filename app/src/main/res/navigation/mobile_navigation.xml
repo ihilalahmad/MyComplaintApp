@@ -25,10 +25,19 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_complaints"
         android:name="com.example.mycomplaintapp.ui.fragments.ComplaintsFragment"
         android:label="Complaints"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard">
+
+        <action
+            android:id="@+id/navigate_complaints_to_chat"
+            app:destination="@id/chatFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/userLoginFragment"
@@ -41,16 +50,16 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"  />
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/navigate_login_to_home"
             app:destination="@id/navigation_home"
-            app:popUpTo="@id/navigation_home"
-            app:popUpToInclusive="true"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"  />
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -63,7 +72,7 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"  />
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/registerComplaintFragment"
@@ -72,13 +81,13 @@
         tools:layout="@layout/fragment_register_complaint">
         <argument
             android:name="department"
-            app:argType="com.example.mycomplaintapp.models.DeptModel"/>
+            app:argType="com.example.mycomplaintapp.models.DeptModel" />
         <argument
             android:name="userId"
-            app:argType="string"/>
+            app:argType="string" />
         <argument
             android:name="userName"
-            app:argType="string"/>
+            app:argType="string" />
         <action
             android:id="@+id/navigate_to_home"
             app:destination="@id/navigation_home"
@@ -87,6 +96,14 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
-
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.mycomplaintapp.ui.fragments.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat">
+        <argument
+            android:name="complaint"
+            app:argType="com.example.mycomplaintapp.models.ComplaintsModel" />
+    </fragment>
 
 </navigation>

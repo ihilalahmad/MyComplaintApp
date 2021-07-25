@@ -63,15 +63,14 @@ class RegisterComplaintFragment : Fragment() {
             val complaintSubject = binding.etComplaintSubject.text.toString()
             val complaintDetails = binding.etComplaintDetails.text.toString()
 
-            hashMap["message"] = complaintDetails
-            hashMap["subject"] = complaintSubject
+            hashMap["deptName"] = deptName
+            hashMap["complaintDetails"] = complaintDetails
+            hashMap["complaintSubject"] = complaintSubject
             hashMap["userContact"] = userContact
             hashMap["userId"] = userId
             hashMap["userName"] = userName
 
-            FirebaseDatabase.getInstance().getReference("Departments")
-                .child(deptName)
-                .child("Complaints")
+            FirebaseDatabase.getInstance().getReference("Complaints")
                 .push()
                 .setValue(hashMap)
                 .addOnCompleteListener {

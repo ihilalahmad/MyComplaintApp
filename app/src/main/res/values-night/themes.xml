@@ -32,4 +32,30 @@
     </style>
 
 
+    <!-- custom style for received message items -->
+    <style name="MessageCardViewStyleReceived" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_card_custom_received_corners</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay_card_custom_received_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">8dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomRight">8dp</item>
+        <item name="cornerSizeBottomLeft">16dp</item>
+    </style>
+
+    <!-- custom style for sent message items -->
+    <style name="MessageCardViewStyleSent" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_card_custom_sent_corners</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay_card_custom_sent_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeTopLeft">8dp</item>
+        <item name="cornerSizeBottomRight">16dp</item>
+        <item name="cornerSizeBottomLeft">8dp</item>
+    </style>
+
 </resources>

@@ -49,8 +49,8 @@ class UserLoginFragment : Fragment() {
 
     private fun loginUserWithFirebase() {
         binding.loginProgressBar.visibility = View.VISIBLE
-        if (validateLoginForm()) {
 
+        if (validateLoginForm()) {
 
             binding.btnLogin.visibility = View.GONE
 

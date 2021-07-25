@@ -35,7 +35,7 @@
 
         <TextView
             android:id="@+id/tvDeptDesc"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:text="To make a complaint click ''Register Complaint''"
